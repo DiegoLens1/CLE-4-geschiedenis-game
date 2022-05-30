@@ -2,6 +2,8 @@ import * as PIXI from 'pixi.js'
 import fishImage from "./images/fish.png"
 import bubbleImage from "./images/bubble.png"
 import waterImage from "./images/water.jpg"
+import textboxImage from "./images/textbox.png"
+import {Textbox} from "./classes/ui/textbox"
 
 let height = 450
 let width = 800
@@ -9,6 +11,7 @@ let width = 800
 export class Game {
 
     pixi: PIXI.Application
+    textbox:Textbox
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height})
@@ -17,13 +20,16 @@ export class Game {
         this.pixi.loader
             .add("fishTexture", fishImage)
             .add("waterTexture", waterImage)
+            .add("textboxTexture", textboxImage)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
     doneLoading() {
        let water = new PIXI.Sprite(this.pixi.loader.resources["waterTexture"].texture!)
        this.pixi.stage.addChild(water)
-        new Fish(this.pixi)
+       new Fish(this.pixi)
+       this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
+       this.pixi.stage.addChild(this.textbox)
     }
 }
 

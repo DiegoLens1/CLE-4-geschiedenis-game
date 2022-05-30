@@ -22,7 +22,7 @@ export class Game {
         document.body.appendChild(this.pixi.view)
 
         this.pixi.loader
-            .add("fishTexture", fishImage)
+            .add("fishTexture", boer2Image)
             .add("waterTexture", waterImage)
             .add("textboxTexture", textboxImage)
             .add("rickyTexture", rickyImage)
@@ -46,6 +46,8 @@ export class Game {
         }
         this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         this.pixi.stage.addChild(this.textbox)
+        this.textbox.showText()
+        this.pixi.stage.addChild(this.textbox.basicText)
         this.pixi.ticker.add((delta) => this.update(delta))
     }
 
@@ -63,6 +65,7 @@ export class Fish {
         this.fish = new PIXI.Sprite(pixi.loader.resources["fishTexture"].texture!)
         this.fish.x = 200
         this.startingY = 300
+        this.fish.scale.set(0.2)
         pixi.stage.addChild(this.fish)
         pixi.ticker.add((delta) => this.update(5))
     }

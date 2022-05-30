@@ -3,7 +3,9 @@ import fishImage from "./images/fish.png"
 import bubbleImage from "./images/bubble.png"
 import waterImage from "./images/water.jpg"
 import textboxImage from "./images/textbox.png"
+import rickyImage from "./images/Ricky.png"
 import {Textbox} from "./classes/ui/textbox"
+import {Character} from "./classes/inGameElements/character"
 
 let height = 450
 let width = 800
@@ -12,6 +14,7 @@ export class Game {
 
     pixi: PIXI.Application
     textbox:Textbox
+    charachter:Character
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height})
@@ -21,6 +24,7 @@ export class Game {
             .add("fishTexture", fishImage)
             .add("waterTexture", waterImage)
             .add("textboxTexture", textboxImage)
+            .add("rickyTexture", rickyImage)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
@@ -28,6 +32,8 @@ export class Game {
        let water = new PIXI.Sprite(this.pixi.loader.resources["waterTexture"].texture!)
        this.pixi.stage.addChild(water)
        new Fish(this.pixi)
+       this.charachter = new Character(this.pixi.loader.resources["rickyTexture"].texture!)
+       this.pixi.stage.addChild(this.charachter)
        this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
        this.pixi.stage.addChild(this.textbox)
     }

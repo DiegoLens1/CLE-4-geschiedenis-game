@@ -8,8 +8,9 @@ export class Character extends PIXI.Sprite
     colour: string
     screenApearence: number
 
-    constructor(texture:PIXI.Texture){
+    constructor(texture:PIXI.Texture, boer1:PIXI.Texture){
         super(texture)
+
         this.scale.set(0.5)
         this.x = 500
         this.y = 50

@@ -16,8 +16,4 @@ export class Inventory
     {
         //Content here
     }
-
-
-
-
 }

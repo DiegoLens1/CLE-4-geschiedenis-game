@@ -6,9 +6,13 @@ import rickyImage from "./images/Ricky.png"
 import boer1Image from "./images/boer1.png"
 import boer2Image from "./images/boer2.png"
 import jager1Image from "./images/Jager1.png"
+import tijdmachineImage from "./images/tijdmachine.png"
+import potImage from "./images/pot.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
+import {Menu} from "./classes/ui/menu";
+import {Items} from "./classes/inGameElements/items"
 
 let height = 450
 let width = 800
@@ -16,7 +20,11 @@ let width = 800
 export class Game {
     pixi: PIXI.Application
     textbox: Textbox
+    menu:Menu
+    item:Items
     charachters: Character[] = []
+    height = height
+    width = width
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height })
@@ -30,6 +38,8 @@ export class Game {
             .add("boer1Texture", boer1Image)
             .add("boer2Texture", boer2Image)
             .add("jager1Texture", jager1Image)
+            .add("tijdmachineTexture", tijdmachineImage)
+            .add("potTexture", potImage)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
@@ -44,6 +54,10 @@ export class Game {
         this.pixi.stage.addChild(this.textbox)
         this.textbox.showText()
         this.pixi.stage.addChild(this.textbox.basicText)
+        this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
+        this.pixi.stage.addChild(this.menu)
+        this.item = new Items(this.pixi.loader.resources["potTexture"].texture!)
+        this.pixi.stage.addChild(this.item)
         this.pixi.ticker.add((delta) => this.update(delta))
     }
 
@@ -79,4 +93,4 @@ export class Fish {
 
 }
 
-new Game()
+new Game() 

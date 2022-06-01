@@ -8,6 +8,7 @@ import boer2Image from "./images/boer2.png"
 import jager1Image from "./images/Jager1.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
+import {Ricky} from "./classes/inGameElements/ricky";
 
 let height = 450
 let width = 800
@@ -35,15 +36,10 @@ export class Game {
     doneLoading() {
         let water = new PIXI.Sprite(this.pixi.loader.resources["waterTexture"].texture!)
         this.pixi.stage.addChild(water)
-        new Fish(this.pixi)
-        for (let i = 0; i < 4; i++) {
-            let character = new Character(this.pixi.loader.resources["rickyTexture"].texture!, 
-                this.pixi.loader.resources["boer1Texture"].texture!, 
-                this.pixi.loader.resources["boer2Texture"].texture!, 
-                this.pixi.loader.resources["jager1Texture"].texture!)
-            this.pixi.stage.addChild(character)
-            this.charachters.push(character)
-        }
+            let ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
+            this.pixi.stage.addChild(ricky)
+            this.charachters.push(ricky)
+
         this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         this.pixi.stage.addChild(this.textbox)
         this.textbox.showText()

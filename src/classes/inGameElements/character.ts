@@ -7,30 +7,14 @@ export class Character extends PIXI.Sprite
     SpriteState: string
     colour: string
     screenApearence: number
-    boer1:PIXI.Texture
-    boer2:PIXI.Texture
-    jager1:PIXI.Texture
+    sprite:PIXI.Texture
 
-    constructor(ricky:PIXI.Texture, boer1:PIXI.Texture, boer2:PIXI.Texture, jager1:PIXI.Texture){
-        super(ricky)
-        this.boer1 = boer1
-        this.boer2 = boer2
-        this.jager1 = jager1
+    constructor(sprite:PIXI.Texture){
+        super(sprite)
+        this.sprite = sprite
 
         this.scale.set(0.5)
         this.x = 500
         this.y = 50
-    }
-
-    changeSprite(texture:string){
-        if(texture = 'boer1'){
-            this.texture = this.boer1
-        }
-        if(texture = 'boer2'){
-            this.texture = this.boer2
-        }
-        if(texture = 'jager1'){
-            this.texture = this.jager1
-        }
     }
 }

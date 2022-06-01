@@ -5,13 +5,13 @@ export class Backround
 
     constructor()
     {
-        this.playBgm();
+        this.playBgm(this.music);
         this.showBackground();
     }
 
-    playBgm()
+    playBgm(music: string)
     {
-        //code voor spelen van muziek
+        //music player
     }
 
     showBackground()

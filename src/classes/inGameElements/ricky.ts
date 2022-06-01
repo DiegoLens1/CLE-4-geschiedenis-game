@@ -7,3 +7,8 @@ export class Ricky extends Character
         super(sprite);
     }
 }
+
+walk()
+{
+    //code here
+}

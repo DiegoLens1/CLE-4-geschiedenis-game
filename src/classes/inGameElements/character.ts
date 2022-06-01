@@ -21,4 +21,16 @@ export class Character extends PIXI.Sprite
         this.x = 500
         this.y = 50
     }
+
+    changeSprite(texture:string){
+        if(texture = 'boer1'){
+            this.texture = this.boer1
+        }
+        if(texture = 'boer2'){
+            this.texture = this.boer2
+        }
+        if(texture = 'jager1'){
+            this.texture = this.jager1
+        }
+    }
 }

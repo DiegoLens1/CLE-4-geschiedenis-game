@@ -14,7 +14,7 @@ export class Textbox extends PIXI.Sprite{
          fontSize: 24,
          fill: 0x000000
      })
-     this.basicText = new PIXI.Text(`Score: 0 Lives: 3`, style)
+     this.basicText = new PIXI.Text(`Hoi ik ben Ricky`, style)
      this.basicText.x = 10
      this.basicText.y = 340
     }

@@ -36,7 +36,7 @@ export class Game {
         let water = new PIXI.Sprite(this.pixi.loader.resources["waterTexture"].texture!)
         this.pixi.stage.addChild(water)
         new Fish(this.pixi)
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 4; i++) {
             let character = new Character(this.pixi.loader.resources["rickyTexture"].texture!, 
                 this.pixi.loader.resources["boer1Texture"].texture!, 
                 this.pixi.loader.resources["boer2Texture"].texture!, 
@@ -52,7 +52,7 @@ export class Game {
     }
 
     update(delta:number){
-        console.log(Character)
+        
     }
 }
 
@@ -63,8 +63,9 @@ export class Fish {
 
     constructor(pixi: PIXI.Application) {
         this.fish = new PIXI.Sprite(pixi.loader.resources["fishTexture"].texture!)
-        this.fish.x = 200
-        this.startingY = 300
+        this.fish.x = 500
+        this.startingY = 700
+        this.fish.anchor.set(0.5)
         this.fish.scale.set(0.2)
         pixi.stage.addChild(this.fish)
         pixi.ticker.add((delta) => this.update(5))
@@ -77,6 +78,7 @@ export class Fish {
         }
         this.fish.x -= 0.1 * delta
         this.fish.y += Math.sin(this.fish.x * 0.02) * 0.5
+        this.fish.angle = ((Math.sin(this.fish.x * 0.02) * 0.5-4)/(-4-4) * (360-0)) -180
     }
 
 }

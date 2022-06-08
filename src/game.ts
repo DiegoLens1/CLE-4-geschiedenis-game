@@ -17,6 +17,7 @@ export class Game {
     pixi: PIXI.Application
     textbox: Textbox
     charachters: Character[] = []
+    ricky:Ricky
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height })
@@ -36,19 +37,20 @@ export class Game {
     doneLoading() {
         let water = new PIXI.Sprite(this.pixi.loader.resources["waterTexture"].texture!)
         this.pixi.stage.addChild(water)
-            let ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
-            this.pixi.stage.addChild(ricky)
-            this.charachters.push(ricky)
+            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
+            this.pixi.stage.addChild(this.ricky)
 
         this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         this.pixi.stage.addChild(this.textbox)
         this.textbox.showText()
+        
         this.pixi.stage.addChild(this.textbox.basicText)
-        this.pixi.ticker.add((delta) => this.update(delta))
+        this.pixi.ticker.add((delta)=>this.update(5));
     }
 
     update(delta:number){
-        
+        this.ricky.walk()
+
     }
 }
 
@@ -79,4 +81,3 @@ export class Fish {
 
 }
 
-new Game()

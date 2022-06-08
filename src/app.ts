@@ -27,7 +27,7 @@ export class App{
 
     loadCompleted(): void {
         let paper = new PIXI.Sprite(this.loader.resources["paperTexture"].texture!);
-        paper.scale.set(0.2);
+        paper.scale.set(0.6);
         this.pixi.stage.addChild(paper);
     
 

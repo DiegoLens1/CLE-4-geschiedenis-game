@@ -8,6 +8,7 @@ import boer2Image from "./images/boer2.png"
 import jager1Image from "./images/Jager1.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
+import backgroundTrack from "url:./music/backgroundaudio.mp3"  
 
 let height = 450
 let width = 800
@@ -29,10 +30,15 @@ export class Game {
             .add("boer1Texture", boer1Image)
             .add("boer2Texture", boer2Image)
             .add("jager1Texture", jager1Image)
+            .add("bgMusic", backgroundTrack)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
     doneLoading() {
+        //make sure the bg track is loaded before anything else because browser delay
+        let bgMusic = this.pixi.loader.resources["bgMusic"].data!
+        bgMusic.play()
+
         let water = new PIXI.Sprite(this.pixi.loader.resources["waterTexture"].texture!)
         this.pixi.stage.addChild(water)
         new Fish(this.pixi)

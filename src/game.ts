@@ -8,6 +8,7 @@ import boer2Image from "./images/boer2.png"
 import jager1Image from "./images/Jager1.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
+import {Ricky} from "./classes/inGameElements/ricky";
 
 let height = 450
 let width = 800
@@ -16,6 +17,7 @@ export class Game {
     pixi: PIXI.Application
     textbox: Textbox
     charachters: Character[] = []
+    ricky:Ricky
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height })
@@ -35,24 +37,20 @@ export class Game {
     doneLoading() {
         let water = new PIXI.Sprite(this.pixi.loader.resources["waterTexture"].texture!)
         this.pixi.stage.addChild(water)
-        new Fish(this.pixi)
-        for (let i = 0; i < 4; i++) {
-            let character = new Character(this.pixi.loader.resources["rickyTexture"].texture!, 
-                this.pixi.loader.resources["boer1Texture"].texture!, 
-                this.pixi.loader.resources["boer2Texture"].texture!, 
-                this.pixi.loader.resources["jager1Texture"].texture!)
-            this.pixi.stage.addChild(character)
-            this.charachters.push(character)
-        }
+            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
+            this.pixi.stage.addChild(this.ricky)
+
         this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         this.pixi.stage.addChild(this.textbox)
         this.textbox.showText()
+        
         this.pixi.stage.addChild(this.textbox.basicText)
-        this.pixi.ticker.add((delta) => this.update(delta))
+        this.pixi.ticker.add((delta)=>this.update(5));
     }
 
     update(delta:number){
-        
+        this.ricky.walk()
+
     }
 }
 
@@ -83,4 +81,3 @@ export class Fish {
 
 }
 
-new Game()

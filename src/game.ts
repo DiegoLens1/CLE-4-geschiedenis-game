@@ -9,6 +9,8 @@ import jager1Image from "./images/Jager1.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
+import {Menu} from "./classes/ui/menu"
+import {Items} from "./classes/inGameElements/items"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"  
 
 let height = 450
@@ -19,6 +21,8 @@ export class Game {
     textbox: Textbox
     charachters: Character[] = []
     ricky:Ricky
+    menu:Menu
+    item:Items
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height })
@@ -31,6 +35,8 @@ export class Game {
             .add("rickyTexture", rickyImage)
             .add("boer1Texture", boer1Image)
             .add("boer2Texture", boer2Image)
+            .add("jager1Texture", jager1Image)
+            .add("jager1Texture", jager1Image)
             .add("jager1Texture", jager1Image)
             .add("bgMusic", backgroundTrack)
         this.pixi.loader.load(() => this.doneLoading())
@@ -49,6 +55,11 @@ export class Game {
         this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         this.pixi.stage.addChild(this.textbox)
         this.textbox.showText()
+
+        this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
+        this.pixi.stage.addChild(this.menu)
+        this.item = new Items(this.pixi.loader.resources["potTexture"].texture!)
+        this.pixi.stage.addChild(this.item)
         
         this.pixi.stage.addChild(this.textbox.basicText)
         this.pixi.ticker.add((delta)=>this.update(5));

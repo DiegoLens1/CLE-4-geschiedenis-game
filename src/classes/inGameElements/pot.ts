@@ -17,6 +17,7 @@ export class Pot extends PIXI.Sprite {
     onClick(){
         this.alpha = 1
         this.collected = true
+
     }
 
     onKeyDown(e: KeyboardEvent): any {

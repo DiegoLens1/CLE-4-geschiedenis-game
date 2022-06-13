@@ -55,7 +55,6 @@ export class App{
     }
 
     onClick(){
-        console.log('YOO');
         document.getElementsByTagName('canvas')[0].remove();
         new Game();
     }

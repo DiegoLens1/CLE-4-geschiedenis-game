@@ -71,6 +71,7 @@ export class Game {
             this.pixi.stage.addChild(boer1Image)
          
 
+
         this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         this.pixi.stage.addChild(this.textbox)
         this.textbox.showText()
@@ -83,6 +84,7 @@ export class Game {
         this.speer = new Speer(this.pixi.loader.resources["speerTexture"].texture!)
         this.pixi.stage.addChild(this.speer)
         this.speer.on('pointerdown', () => this.speer.onClick());
+
 
         this.pixi.ticker.add((delta)=>this.update(5));
     }

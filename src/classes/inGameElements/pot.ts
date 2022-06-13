@@ -7,5 +7,11 @@ export class Pot extends PIXI.Sprite {
         this.anchor.set(0.5)
         this.x = 170
         this.y = 195
+        this.alpha = 0.2
+        this.interactive = true
+    }
+    
+    onClick(){
+        this.alpha = 1
     }
 }

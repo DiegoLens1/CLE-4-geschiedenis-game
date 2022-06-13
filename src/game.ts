@@ -64,10 +64,13 @@ export class Game {
 
         this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
         this.pixi.stage.addChild(this.menu)
+        this.menu.on('pointerdown', () => this.menu.onClick());
         this.pot = new Pot(this.pixi.loader.resources["potTexture"].texture!)
         this.pixi.stage.addChild(this.pot)
+        this.pot.on('pointerdown', () => this.pot.onClick());
         this.speer = new Speer(this.pixi.loader.resources["speerTexture"].texture!)
         this.pixi.stage.addChild(this.speer)
+        this.speer.on('pointerdown', () => this.speer.onClick());
 
         this.pixi.ticker.add((delta)=>this.update(5));
     }

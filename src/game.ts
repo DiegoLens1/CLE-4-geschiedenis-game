@@ -55,11 +55,10 @@ export class Game {
             boer1Image.x = 400;
             boer1Image.y = 100;
 
-            this.potImage = new 
-
+        
             this.pixi.stage.addChild(this.ricky)
             this.pixi.stage.addChild(boer1Image)
-            this.pixi.stage.addChild(potImage)
+         
 
         // this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         // this.pixi.stage.addChild(this.textbox)

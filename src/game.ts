@@ -35,7 +35,6 @@ export class Game {
 
         this.pixi.loader
             .add("fishTexture", boer2Image)
-            .add("potTexture", potImage)
             .add("backgroundTexture", backgroundImage)
             .add("textboxTexture", textboxImage)
             .add("rickyTexture", rickyImage)

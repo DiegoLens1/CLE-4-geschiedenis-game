@@ -9,6 +9,7 @@ import potImage from "./images/pot.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
+import {Boer1} from "./classes/inGameElements/boer1"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"  
 
 let height = 450
@@ -20,6 +21,7 @@ export class Game {
     characters: Character[] = []
     potImage:PIXI.Sprite
     ricky:Ricky
+    boer1: Boer1
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height })
@@ -57,22 +59,21 @@ export class Game {
             this.ricky.scale.set(0.3);
             this.ricky.y = 150;
 
-            let boer1Image = new Character(this.pixi.loader.resources["boer1Texture"].texture!)
-            boer1Image.scale.set(0.3);
-            boer1Image.x = 400;
-            boer1Image.y = 100;
+            this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!)
+            this.boer1.on('pointerdown', () => this.boer1.onClick());
+            this.boer1.scale.set(0.3);
+            this.boer1.x = 400;
+            this.boer1.y = 100;
         
 
             this.pixi.stage.addChild(this.ricky)
-            this.pixi.stage.addChild(boer1Image)
+            this.pixi.stage.addChild(this.boer1)
             this.pixi.stage.addChild(this.potImage)
          
-
         // this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
         // this.pixi.stage.addChild(this.textbox)
         // this.textbox.showText()
         
-        this.pixi.stage.addChild(this.textbox.basicText)
         this.pixi.ticker.add((delta)=>this.update(5));
     }
 

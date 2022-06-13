@@ -1,5 +1,4 @@
 import * as PIXI from 'pixi.js'
-import fishImage from "./images/fish.png"
 import backgroundImage from "./images/background.png"
 import textboxImage from "./images/textbox.png"
 import rickyImage from "./images/Ricky.png"
@@ -19,6 +18,7 @@ export class Game {
     pixi: PIXI.Application
     textbox: Textbox
     characters: Character[] = []
+    potImage:PIXI.Sprite
     ricky:Ricky
 
     constructor() {
@@ -27,6 +27,7 @@ export class Game {
 
         this.pixi.loader
             .add("fishTexture", boer2Image)
+            .add("potTexture", potImage)
             .add("backgroundTexture", backgroundImage)
             .add("textboxTexture", textboxImage)
             .add("rickyTexture", rickyImage)
@@ -46,6 +47,12 @@ export class Game {
         background.scale.set(1.32);
         
         this.pixi.stage.addChild(background)
+            
+            this.potImage = new PIXI.Sprite(this.pixi.loader.resources["potTexture"].texture)
+            this.potImage.scale.set(0.3);
+            this.potImage.x = 300;
+            this.potImage.y = 250;
+
             this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
             this.ricky.scale.set(0.3);
             this.ricky.y = 150;
@@ -54,10 +61,11 @@ export class Game {
             boer1Image.scale.set(0.3);
             boer1Image.x = 400;
             boer1Image.y = 100;
-
         
+
             this.pixi.stage.addChild(this.ricky)
             this.pixi.stage.addChild(boer1Image)
+            this.pixi.stage.addChild(this.potImage)
          
 
         // this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)

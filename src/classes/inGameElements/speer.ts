@@ -10,7 +10,7 @@ export class Speer extends PIXI.Sprite {
         this.x = 305
         this.y = 195
         this.alpha = 0
-        this.interactive = true
+        this.interactive = false
         this.collected = false
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
     }

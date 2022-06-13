@@ -61,9 +61,10 @@ export class Game {
         this.pixi.stage.addChild(background)
             
             this.potImage = new PIXI.Sprite(this.pixi.loader.resources["potTexture"].texture)
-            this.potImage.scale.set(0.3);
+            this.potImage.on('pointerdown', () => this.pot.onClick());
+            this.potImage.scale.set(0.5);
             this.potImage.x = 300;
-            this.potImage.y = 250;
+            this.potImage.y = 260;
 
             this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
             this.ricky.scale.set(0.3);

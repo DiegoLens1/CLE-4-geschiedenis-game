@@ -13,7 +13,7 @@ export class Menu extends PIXI.Sprite {
         this.anchor.set(0.5)
         this.x = width / 2
         this.y = height / 2
-        this.interactive = true
+        this.interactive = false
         this.alpha = 0
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
     }

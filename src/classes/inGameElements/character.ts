@@ -16,5 +16,9 @@ export class Character extends PIXI.Sprite
         this.scale.set(0.5)
         this.x = 500
         this.y = 50
+
+        this.interactive = true
+        
     }
+
 }

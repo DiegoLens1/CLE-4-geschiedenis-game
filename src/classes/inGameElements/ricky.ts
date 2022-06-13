@@ -1,7 +1,7 @@
 import {Character} from "./character";
 import * as PIXI from "pixi.js";
 
-export class Ricky extends Character
+export class Ricky extends PIXI.Sprite
 {
     private _timeTravel: boolean = false;
 
@@ -14,7 +14,12 @@ export class Ricky extends Character
     }
 
     constructor(sprite:PIXI.Texture) {
-        super(sprite);2
+        super(sprite);
+
+        this.scale.set(0.4)
+        this.y = 110;
+        this.x = 10;
+
     }
     timeTransition()
     {
@@ -22,6 +27,11 @@ export class Ricky extends Character
             this.scale.x - 0.1
             this.scale.y - 0.1
         }
+    }
+
+    walk(){
+        this.x ++;
+
     }
 
 }

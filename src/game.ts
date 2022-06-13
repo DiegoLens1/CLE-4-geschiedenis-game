@@ -64,7 +64,6 @@ export class Game {
 
         this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
         this.pixi.stage.addChild(this.menu)
-        this.menu.on('pointerdown', () => this.menu.onClick());
         this.pot = new Pot(this.pixi.loader.resources["potTexture"].texture!)
         this.pixi.stage.addChild(this.pot)
         this.pot.on('pointerdown', () => this.pot.onClick());

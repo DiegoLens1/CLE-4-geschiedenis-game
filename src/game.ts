@@ -6,10 +6,15 @@ import boer1Image from "./images/boer1.png"
 import boer2Image from "./images/boer2.png"
 import jager1Image from "./images/Jager1.png"
 import potImage from "./images/pot.png"
+import speerImage from "./images/speer.png"
+import tijdmachineImage from "./images/tijdmachine.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
 import {Boer1} from "./classes/inGameElements/boer1"
+import {Menu} from "./classes/ui/menu"
+import {Pot} from "./classes/inGameElements/pot"
+import {Speer} from "./classes/inGameElements/speer"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"  
 
 let height = 450
@@ -22,6 +27,9 @@ export class Game {
     potImage:PIXI.Sprite
     ricky:Ricky
     boer1: Boer1
+    menu:Menu
+    pot:Pot
+    speer:Speer
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height })
@@ -29,13 +37,15 @@ export class Game {
 
         this.pixi.loader
             .add("fishTexture", boer2Image)
-            .add("potTexture", potImage)
             .add("backgroundTexture", backgroundImage)
             .add("textboxTexture", textboxImage)
             .add("rickyTexture", rickyImage)
             .add("boer1Texture", boer1Image)
             .add("boer2Texture", boer2Image)
             .add("jager1Texture", jager1Image)
+            .add("potTexture", potImage)
+            .add("speerTexture", speerImage)
+            .add("tijdmachineTexture", tijdmachineImage)
             .add("bgMusic", backgroundTrack)
         this.pixi.loader.load(() => this.doneLoading())
     }
@@ -70,10 +80,18 @@ export class Game {
             this.pixi.stage.addChild(this.boer1)
             this.pixi.stage.addChild(this.potImage)
          
-        // this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
-        // this.pixi.stage.addChild(this.textbox)
-        // this.textbox.showText()
+
         
+        this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
+        this.pixi.stage.addChild(this.menu)
+        this.pot = new Pot(this.pixi.loader.resources["potTexture"].texture!)
+        this.pixi.stage.addChild(this.pot)
+        this.pot.on('pointerdown', () => this.pot.onClick());
+        this.speer = new Speer(this.pixi.loader.resources["speerTexture"].texture!)
+        this.pixi.stage.addChild(this.speer)
+        this.speer.on('pointerdown', () => this.speer.onClick());
+
+
         this.pixi.ticker.add((delta)=>this.update(5));
     }
 

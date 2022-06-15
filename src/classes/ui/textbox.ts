@@ -19,6 +19,6 @@ export class Textbox extends PIXI.Sprite{
 
     showText(){
         this.alpha = 1
-        this.basicText.text = "hoi"
+        this.basicText.text = "Hoi ik ben Toni"
     }
 }

@@ -84,7 +84,6 @@ export class Game {
 
             this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
             this.pixi.stage.addChild(this.textbox)
-            
             this.pixi.stage.addChild(this.textbox.basicText)
 
         this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)

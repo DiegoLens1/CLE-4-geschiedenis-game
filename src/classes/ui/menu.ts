@@ -1,12 +1,12 @@
 import * as PIXI from 'pixi.js'
 import {Game} from '../../game'
-import {Pot} from "../inGameElements/pot"
+import {InventoryItem} from "../inGameElements/inventoryItem"
 import {Speer} from "../inGameElements/speer"
 
 
 export class Menu extends PIXI.Sprite {
-    pot: Pot
-    speer: Speer
+    pot: InventoryItem
+    speer: InventoryItem
     pixi: PIXI.Application
 
     constructor(pixi: PIXI.Application, texture: PIXI.Texture, height: number, width: number) {
@@ -24,10 +24,14 @@ export class Menu extends PIXI.Sprite {
     }
 
     private createInventory() {
-        this.pot = new Pot(this.pixi.loader.resources["potTexture"].texture!, -450, -50, 1.4)
+        this.pot = new InventoryItem(this.pixi.loader.resources["potTexture"].texture!, -450, -50, 1.4)
+        this.speer = new InventoryItem(this.pixi.loader.resources["speerTexture"].texture!,-180,-60,0.55)
+        this.speer.angle = 10;
         this.pot.alpha = 0.2
+        this.speer.alpha = 0.2
         // this.pixi.stage.addChild(this.pot)
         this.addChild(this.pot)
+        this.addChild(this.speer)
     }
 
 
@@ -52,6 +56,11 @@ export class Menu extends PIXI.Sprite {
         if (name == "pot") {
             console.log('pot aan ge klikt')
             this.pot.alpha = 1
+        }
+        if (name == "speer")
+        {
+            console.log('speer aan ge klikt')
+            this.speer.alpha = 1
         }
     }
 

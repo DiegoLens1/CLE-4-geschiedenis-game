@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js"
 
-export class Pot extends PIXI.Sprite {
+export class InventoryItem extends PIXI.Sprite {
     collected:boolean
     constructor(texture:PIXI.Texture, x: number, y: number, scale: number){
         super(texture)

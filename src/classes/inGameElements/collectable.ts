@@ -1,9 +1,9 @@
 import * as PIXI from "pixi.js"
-import {Pot} from "./pot";
+import {InventoryItem} from "./inventoryItem";
 import {Menu} from "../ui/menu";
 import {Game} from "../../game";
 
-export class Items extends PIXI.Sprite {
+export class Collectable extends PIXI.Sprite {
     private _collected:boolean
     private _name:string
     private _menu: Menu

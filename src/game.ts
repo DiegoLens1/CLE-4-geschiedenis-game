@@ -13,10 +13,10 @@ import {Character} from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
 import {Boer1} from "./classes/inGameElements/boer1"
 import {Menu} from "./classes/ui/menu"
-import {Pot} from "./classes/inGameElements/pot"
+import {InventoryItem} from "./classes/inGameElements/inventoryItem"
 import {Speer} from "./classes/inGameElements/speer"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"
-import {Items} from "./classes/inGameElements/items";
+import {Collectable} from "./classes/inGameElements/collectable";
 
 let height = 450
 let width = 800
@@ -29,9 +29,9 @@ export class Game {
     ricky: Ricky
     boer1: Boer1
     menu: Menu
-    pot: Pot
+    pot: InventoryItem
     speer: Speer
-    potObject: Items
+    potObject: Collectable
 
     constructor() {
         this.pixi = new PIXI.Application({width: width, height: height})
@@ -84,7 +84,7 @@ export class Game {
 
         this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
 
-        this.potObject = new Items(this.pixi.loader.resources["potTexture"].texture!, false, 300, 260, "pot", this.menu)
+        this.potObject = new Collectable(this.pixi.loader.resources["potTexture"].texture!, false, 300, 260, "pot", this.menu)
         this.pixi.stage.addChild(this.potObject)
 
         this.speer = new Speer(this.pixi.loader.resources["speerTexture"].texture!)

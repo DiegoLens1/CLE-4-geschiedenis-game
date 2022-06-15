@@ -7,6 +7,7 @@ import boer2Image from "./images/boer2.png"
 import jager1Image from "./images/Jager1.png"
 import potImage from "./images/pot.png"
 import speerImage from "./images/speer.png"
+import tekstbox1Image from "./images/tekstbox1.png"
 import tijdmachineImage from "./images/tijdmachine.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
@@ -30,13 +31,14 @@ export class Game {
     menu:Menu
     pot:Pot
     speer:Speer
+    tekstbox1:PIXI.Sprite
 
     constructor() {
         this.pixi = new PIXI.Application({ width: width, height: height })
         document.body.appendChild(this.pixi.view)
 
         this.pixi.loader
-            .add("fishTexture", boer2Image)
+            .add("tekstbox1Texture", tekstbox1Image)
             .add("backgroundTexture", backgroundImage)
             .add("textboxTexture", textboxImage)
             .add("rickyTexture", rickyImage)
@@ -70,18 +72,17 @@ export class Game {
             this.ricky.scale.set(0.3);
             this.ricky.y = 150;
 
-            this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!)
+            this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!, this.pixi.loader.resources["tekstbox1Texture"].texture!, this.pixi)
             this.boer1.on('pointerdown', () => this.boer1.onClick());
             this.boer1.scale.set(0.3);
             this.boer1.x = 400;
             this.boer1.y = 100;
-        
 
+            this.tekstbox1 = new PIXI.Sprite(this.pixi.loader.resources["tekstbox1Texture"].texture!)
+        
             this.pixi.stage.addChild(this.ricky)
             this.pixi.stage.addChild(this.boer1)
             this.pixi.stage.addChild(this.potImage)
-         
-
         
         this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
         this.pixi.stage.addChild(this.menu)
@@ -98,7 +99,7 @@ export class Game {
 
     update(delta:number){
         // this.ricky.walk()
-
+        
     }
 }
 

@@ -72,6 +72,7 @@ export class Game {
 
             this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!)
             this.boer1.on('pointerdown', () => this.boer1.onClick());
+            this.boer1.on('pointerdown', () => this.textbox.showText())
             this.boer1.scale.set(0.3);
             this.boer1.x = 400;
             this.boer1.y = 100;
@@ -81,7 +82,8 @@ export class Game {
             this.pixi.stage.addChild(this.boer1)
             this.pixi.stage.addChild(this.potImage)
 
-
+            this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
+            this.pixi.stage.addChild(this.textbox)
 
         this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
         this.pixi.stage.addChild(this.menu)

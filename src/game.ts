@@ -16,7 +16,7 @@ import {Boer1} from "./classes/inGameElements/boer1"
 import {Menu} from "./classes/ui/menu"
 import {Pot} from "./classes/inGameElements/pot"
 import {Speer} from "./classes/inGameElements/speer"
-import backgroundTrack from "url:./music/backgroundaudio.mp3"  
+import backgroundTrack from "url:./music/backgroundaudio.mp3"
 
 let height = 450
 let width = 800
@@ -59,9 +59,9 @@ export class Game {
 
         let background = new PIXI.Sprite(this.pixi.loader.resources["backgroundTexture"].texture!)
         background.scale.set(1.32);
-        
+
         this.pixi.stage.addChild(background)
-            
+
             this.potImage = new PIXI.Sprite(this.pixi.loader.resources["potTexture"].texture)
             this.potImage.on('pointerdown', () => this.pot.onClick());
             this.potImage.scale.set(0.5);
@@ -77,13 +77,23 @@ export class Game {
             this.boer1.scale.set(0.3);
             this.boer1.x = 400;
             this.boer1.y = 100;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0eed75d01ebac416cfe78cf8e9920fa4d6ff077
 
             this.tekstbox1 = new PIXI.Sprite(this.pixi.loader.resources["tekstbox1Texture"].texture!)
         
             this.pixi.stage.addChild(this.ricky)
             this.pixi.stage.addChild(this.boer1)
             this.pixi.stage.addChild(this.potImage)
+<<<<<<< HEAD
         
+=======
+
+
+
+>>>>>>> b0eed75d01ebac416cfe78cf8e9920fa4d6ff077
         this.menu = new Menu(this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
         this.pixi.stage.addChild(this.menu)
         this.pot = new Pot(this.pixi.loader.resources["potTexture"].texture!)
@@ -99,7 +109,11 @@ export class Game {
 
     update(delta:number){
         // this.ricky.walk()
+<<<<<<< HEAD
         
+=======
+        this.ricky.timeTransition()
+>>>>>>> b0eed75d01ebac416cfe78cf8e9920fa4d6ff077
     }
 }
 

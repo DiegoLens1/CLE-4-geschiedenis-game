@@ -12,9 +12,6 @@ export class Button extends PIXI.Sprite
         this.y = y
     }
 
-
-
-
     action()
     {
         //code here

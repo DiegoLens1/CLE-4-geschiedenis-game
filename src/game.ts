@@ -23,7 +23,6 @@ import {InventoryItem} from "./classes/inGameElements/inventoryItem"
 import {Speer} from "./classes/inGameElements/speer"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"
 import {Collectable} from "./classes/inGameElements/collectable";
-import {Mute} from "./classes/ui/mute"
 
 let height = 450
 let width = 800
@@ -41,7 +40,7 @@ export class Game {
     pot: InventoryItem
     speer: Speer
     potObject: Collectable
-    muteButton:Mute
+    bgMusic: any
 
     constructor() {
         this.pixi = new PIXI.Application({width: width, height: height})
@@ -70,8 +69,8 @@ export class Game {
 
     doneLoading() {
         //make sure the bg track is loaded before anything else because browser delay
-        let bgMusic = this.pixi.loader.resources["bgMusic"].data!
-        bgMusic.play()
+        this.bgMusic = this.pixi.loader.resources["bgMusic"].data!
+        this.bgMusic.play()
 
         this.background = new PIXI.Sprite(this.pixi.loader.resources["backgroundTexture"].texture!)
         this.background.scale.set(1.32);
@@ -105,7 +104,7 @@ export class Game {
         this.pixi.stage.addChild(this.boer1)
 
 
-        this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
+        this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width, this)
 
         this.potObject = new Collectable(this.pixi.loader.resources["potTexture"].texture!, false, 300, 260, "pot", this.menu)
         this.pixi.stage.addChild(this.potObject)
@@ -119,8 +118,8 @@ export class Game {
         this.speer.on('pointerdown', () => this.speer.onClick());
 
 
+
         this.pixi.stage.addChild(this.menu)
-        this.muteButton = new Mute(this.pixi.loader.resources["stopButton"].texture!,420,-343,50,211, bgMusic)
         this.pixi.ticker.add((delta) => this.update(5));
     }
 

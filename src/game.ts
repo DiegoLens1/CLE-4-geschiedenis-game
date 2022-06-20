@@ -19,6 +19,17 @@ import {InventoryItem} from "./classes/inGameElements/inventoryItem"
 import {Speer} from "./classes/inGameElements/speer"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"
 import {Collectable} from "./classes/inGameElements/collectable";
+import customImage0 from "./images/0.png"
+import customImage1 from "./images/1.png"
+import customImage2 from "./images/2.png"
+import customImage3 from "./images/3.png"
+import customImage4 from "./images/4.png"
+import customImage5 from "./images/5.png"
+import customImage6 from "./images/6.png"
+import customImage7 from "./images/7.png"
+import customImage8 from "./images/8.png"
+import customImage9 from "./images/9.png"
+
 
 let height = 450
 let width = 800
@@ -53,6 +64,16 @@ export class Game {
             .add("tijdmachineTexture", tijdmachineImage)
             .add("bgMusic", backgroundTrack)
             .add("stopButton", stopButton)
+            .add("customTexture0", customImage0)
+            .add("customTexture1", customImage1)
+            .add("customTexture2", customImage2)
+            .add("customTexture3", customImage3)
+            .add("customTexture4", customImage4)
+            .add("customTexture5", customImage5)
+            .add("customTexture6", customImage6)
+            .add("customTexture7", customImage7)
+            .add("customTexture8", customImage8)
+            .add("customTexture9", customImage9)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
@@ -73,7 +94,13 @@ export class Game {
         // this.potImage.x = 300;
         // this.potImage.y = 260;
 
-        this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
+        if (localStorage.getItem('chosenAvatar') !== null) {
+            let localStorageAvatar = localStorage.getItem('chosenAvatar')!;
+            this.ricky = new Ricky(this.pixi.loader.resources[localStorageAvatar].texture!, this)
+        } else {
+            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!, this)
+        }
+
         this.ricky.scale.set(0.3);
         this.ricky.y = 150;
         this.pixi.stage.addChild(this.ricky)

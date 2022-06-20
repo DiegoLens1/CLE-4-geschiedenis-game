@@ -1,8 +1,8 @@
 import * as PIXI from 'pixi.js'
-import { Game } from './game';
 import startImage from "./images/start.jpg"
 import rickyImage from "./images/Ricky.png"
 import paperImage from "./images/paperbg.jpg"
+import { CustomizationScreen } from './chooseYourCharacter';
 
 export class App{
     private pixiWidth = 800;
@@ -56,7 +56,7 @@ export class App{
 
     onClick(){
         document.getElementsByTagName('canvas')[0].remove();
-        new Game();
+        new CustomizationScreen();
     }
 }
 

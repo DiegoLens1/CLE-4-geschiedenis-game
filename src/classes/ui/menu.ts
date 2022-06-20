@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js'
 import {Game} from '../../game'
 import {InventoryItem} from "../inGameElements/inventoryItem"
 import {Speer} from "../inGameElements/speer"
+import { item } from './item'
 
 
 export class Menu extends PIXI.Sprite {
@@ -63,6 +64,7 @@ export class Menu extends PIXI.Sprite {
             this.speer.alpha = 1
         }
     }
+
 
 
 }

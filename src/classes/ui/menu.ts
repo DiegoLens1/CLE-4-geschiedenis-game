@@ -2,16 +2,22 @@ import * as PIXI from 'pixi.js'
 import {Game} from '../../game'
 import {InventoryItem} from "../inGameElements/inventoryItem"
 import {Speer} from "../inGameElements/speer"
+import { Mute } from './mute';
+import {StopButton} from "./stopButton";
 
 
 export class Menu extends PIXI.Sprite {
     pot: InventoryItem
     speer: InventoryItem
     pixi: PIXI.Application
+    stopButton: StopButton
+    muteButton: Mute
+    game:Game
 
-    constructor(pixi: PIXI.Application, texture: PIXI.Texture, height: number, width: number) {
+    constructor(pixi: PIXI.Application, texture: PIXI.Texture, height: number, width: number, game:Game) {
         super(texture)
         this.pixi = pixi
+        this.game = game
         this.scale.set(0.5)
         this.anchor.set(0.5)
         this.x = width / 2
@@ -26,12 +32,16 @@ export class Menu extends PIXI.Sprite {
     private createInventory() {
         this.pot = new InventoryItem(this.pixi.loader.resources["potTexture"].texture!, -450, -50, 1.4)
         this.speer = new InventoryItem(this.pixi.loader.resources["speerTexture"].texture!,-180,-60,0.55)
+        this.stopButton = new StopButton(this.pixi.loader.resources["stopButton"].texture!,420,-343,50,211)
+        this.muteButton = new Mute(this.pixi.loader.resources["unmuteTexture"].texture!, this.pixi.loader.resources["muteTexture"].texture!, -750,-420,100,100, this.game.bgMusic)
         this.speer.angle = 10;
         this.pot.alpha = 0.2
         this.speer.alpha = 0.2
         // this.pixi.stage.addChild(this.pot)
         this.addChild(this.pot)
         this.addChild(this.speer)
+        this.addChild(this.stopButton)
+        this.addChild(this.muteButton)
     }
 
 
@@ -63,6 +73,7 @@ export class Menu extends PIXI.Sprite {
             this.speer.alpha = 1
         }
     }
+
 
 
 }

@@ -13,7 +13,7 @@ export class Ricky extends PIXI.Sprite
         this._timeTravel = timeTravel;
     }
 
-    constructor(sprite:PIXI.Texture) {
+    constructor(sprite:PIXI.Texture, pixi:PIXI.Application) {
         super(sprite);
 
         this.scale.set(0.4)

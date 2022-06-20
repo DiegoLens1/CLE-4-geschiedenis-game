@@ -15,10 +15,10 @@ export class Mute extends Button {
     action(){
         if(this.bgMusic.volume > 0){
             this.bgMusic.volume = 0
-            this.texture = this.sprite
+            this.texture = this.sprite2
         } else {
             this.bgMusic.volume = 1
-            this.texture = this.sprite2
+            this.texture = this.sprite
         }
     }
 }

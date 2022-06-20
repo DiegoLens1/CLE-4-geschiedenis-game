@@ -12,6 +12,8 @@ import tijdmachineImage from "./images/tijdmachine.png"
 import stopButton from "./images/stopButton.png"
 import molotovImage from "./images/molotov.png"
 import burningImage from "./images/burning.png"
+import muteImage from "./images/muted.png"
+import unmuteImage from "./images/unmuted.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
@@ -38,6 +40,7 @@ export class Game {
     pot: InventoryItem
     speer: Speer
     potObject: Collectable
+    bgMusic: any
 
     constructor() {
         this.pixi = new PIXI.Application({width: width, height: height})
@@ -59,13 +62,15 @@ export class Game {
             .add("burningTexture", burningImage)
             .add("bgMusic", backgroundTrack)
             .add("stopButton", stopButton)
+            .add("muteTexture", muteImage)
+            .add("unmuteTexture", unmuteImage)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
     doneLoading() {
         //make sure the bg track is loaded before anything else because browser delay
-        let bgMusic = this.pixi.loader.resources["bgMusic"].data!
-        bgMusic.play()
+        this.bgMusic = this.pixi.loader.resources["bgMusic"].data!
+        this.bgMusic.play()
 
         this.background = new PIXI.Sprite(this.pixi.loader.resources["backgroundTexture"].texture!)
         this.background.scale.set(1.32);
@@ -99,7 +104,7 @@ export class Game {
         this.pixi.stage.addChild(this.boer1)
 
 
-        this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)
+        this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width, this)
 
         this.potObject = new Collectable(this.pixi.loader.resources["potTexture"].texture!, false, 300, 260, "pot", this.menu)
         this.pixi.stage.addChild(this.potObject)
@@ -111,6 +116,7 @@ export class Game {
         this.speer = new Speer(this.pixi.loader.resources["speerTexture"].texture!)
         this.pixi.stage.addChild(this.speer)
         this.speer.on('pointerdown', () => this.speer.onClick());
+
 
 
         this.pixi.stage.addChild(this.menu)

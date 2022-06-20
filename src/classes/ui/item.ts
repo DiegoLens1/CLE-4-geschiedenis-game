@@ -62,5 +62,6 @@ export class item{
     onClickBack(){
         console.log('back to the game');
         document.getElementsByTagName('canvas')[0].remove();
+        new Game();
     }
 }

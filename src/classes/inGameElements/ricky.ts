@@ -2,6 +2,7 @@ import { Character } from "./character";
 import { Game } from "../../game";
 import * as PIXI from "pixi.js";
 import { Application } from "pixi.js";
+import burningImage from "../../images/burning.png"
 
 export class Ricky extends PIXI.Sprite
 {
@@ -18,6 +19,7 @@ export class Ricky extends PIXI.Sprite
 
     constructor(sprite:PIXI.Texture, game:Game) {
         super(sprite);
+        this.game = game
 
         this.scale.set(0.4)
         this.y = 110;

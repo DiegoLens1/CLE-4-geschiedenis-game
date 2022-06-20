@@ -54,12 +54,12 @@ export class Menu extends PIXI.Sprite {
     collect(name: string) {
         console.log("name")
         if (name == "pot") {
-            console.log('pot aan ge klikt')
+            // console.log('pot aan ge klikt')
             this.pot.alpha = 1
         }
         if (name == "speer")
         {
-            console.log('speer aan ge klikt')
+            // console.log('speer aan ge klikt')
             this.speer.alpha = 1
         }
     }

@@ -1,11 +1,19 @@
-export class Button
+import * as PIXI from "pixi.js";
+
+export class Button extends PIXI.Sprite
 {
-    with: number
-    height: number
-    x: number
-    y: number
-    sprite: string
-    color: string
+
+    constructor(x:number, y:number) {
+        super();
+        this.interactive = true;
+        this.buttonMode = true;
+        this.on('pointerdown', () => this.action());
+        this.x = x
+        this.y = y
+    }
+
+
+
 
     action()
     {

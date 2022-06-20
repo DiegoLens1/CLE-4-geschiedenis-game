@@ -1,6 +1,7 @@
 import { Character } from "./character";
 import { Game } from "../../game";
 import * as PIXI from "pixi.js";
+import { Application } from "pixi.js";
 
 export class Ricky extends PIXI.Sprite
 {
@@ -15,7 +16,7 @@ export class Ricky extends PIXI.Sprite
         this._timeTravel = timeTravel;
     }
 
-    constructor(sprite:PIXI.Texture) {
+    constructor(sprite:PIXI.Texture, pixi:PIXI.Application) {
         super(sprite);
 
         this.scale.set(0.4)
@@ -38,8 +39,9 @@ export class Ricky extends PIXI.Sprite
 
     onKeyDown(e:KeyboardEvent){
         switch (e.key.toUpperCase()) {
-            case "SPACE":
+            case "K":
                 console.log("test")
+                this.game.boer1.destroy
         }
     }
 }

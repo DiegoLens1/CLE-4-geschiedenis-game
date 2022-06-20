@@ -16,7 +16,7 @@ export class Ricky extends PIXI.Sprite
         this._timeTravel = timeTravel;
     }
 
-    constructor(sprite:PIXI.Texture, pixi:PIXI.Application) {
+    constructor(sprite:PIXI.Texture, game:Game) {
         super(sprite);
 
         this.scale.set(0.4)
@@ -41,7 +41,7 @@ export class Ricky extends PIXI.Sprite
         switch (e.key.toUpperCase()) {
             case "K":
                 console.log("test")
-                this.game.boer1.destroy
+                this.game.boer1.destroy()
         }
     }
 }

@@ -12,6 +12,8 @@ import tijdmachineImage from "./images/tijdmachine.png"
 import stopButton from "./images/stopButton.png"
 import molotovImage from "./images/molotov.png"
 import burningImage from "./images/burning.png"
+import muteImage from "./images/muted.png"
+import unmuteImage from "./images/unmuted.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
@@ -21,6 +23,7 @@ import {InventoryItem} from "./classes/inGameElements/inventoryItem"
 import {Speer} from "./classes/inGameElements/speer"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"
 import {Collectable} from "./classes/inGameElements/collectable";
+import {Mute} from "./classes/ui/mute"
 
 let height = 450
 let width = 800
@@ -38,6 +41,7 @@ export class Game {
     pot: InventoryItem
     speer: Speer
     potObject: Collectable
+    muteButton:Mute
 
     constructor() {
         this.pixi = new PIXI.Application({width: width, height: height})
@@ -59,6 +63,8 @@ export class Game {
             .add("burningTexture", burningImage)
             .add("bgMusic", backgroundTrack)
             .add("stopButton", stopButton)
+            .add("muteTexture", muteImage)
+            .add("unmuteTexture", unmuteImage)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
@@ -114,6 +120,7 @@ export class Game {
 
 
         this.pixi.stage.addChild(this.menu)
+        this.muteButton = new Mute(this.pixi.loader.resources["stopButton"].texture!,420,-343,50,211, bgMusic)
         this.pixi.ticker.add((delta) => this.update(5));
     }
 

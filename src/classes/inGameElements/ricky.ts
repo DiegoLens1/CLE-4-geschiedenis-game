@@ -1,5 +1,6 @@
 import {Character} from "./character";
 import * as PIXI from "pixi.js";
+import { Game } from "../../game";
 
 export class Ricky extends PIXI.Sprite
 {
@@ -13,7 +14,7 @@ export class Ricky extends PIXI.Sprite
         this._timeTravel = timeTravel;
     }
 
-    constructor(sprite:PIXI.Texture, pixi:PIXI.Application) {
+    constructor(sprite:PIXI.Texture, game:Game) {
         super(sprite);
 
         this.scale.set(0.4)

@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js"
+import { item } from "../ui/item"
 
 export class InventoryItem extends PIXI.Sprite {
     collected:boolean
@@ -8,7 +9,7 @@ export class InventoryItem extends PIXI.Sprite {
         this.anchor.set(0.5)
         this.x = x
         this.y = y
-        this.interactive = false
+        this.interactive = true
         this.collected = false
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
 
@@ -16,7 +17,9 @@ export class InventoryItem extends PIXI.Sprite {
     }
 
     private onClick() {
-
+        console.log('clicked on pot');
+        document.getElementsByTagName('canvas')[0].remove();
+        new item()
     }
 
     collect(){

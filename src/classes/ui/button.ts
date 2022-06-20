@@ -16,9 +16,6 @@ export class Button extends PIXI.Sprite
         this.alpha = 0;
     }
 
-
-
-
     action()
     {
         //code here

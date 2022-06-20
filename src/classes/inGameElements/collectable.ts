@@ -29,6 +29,7 @@ export class Collectable extends PIXI.Sprite {
 
         this.alpha = 1
         this.interactive = true
+        this.buttonMode = true;
         this.collected = false
         this.name = name;
         // window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))

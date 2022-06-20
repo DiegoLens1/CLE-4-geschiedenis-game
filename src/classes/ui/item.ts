@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import { Game } from './game';
+import { Game } from '../../game';
 import { Menu } from './menu';
 import backButton from '../../images/back-button.png';
 import item1 from '../../images/pot2.png';
@@ -62,6 +62,6 @@ export class item{
     onClickBack(){
         console.log('back to the game');
         document.getElementsByTagName('canvas')[0].remove();
-        new Menu();
+        new Game();
     }
 }

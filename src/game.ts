@@ -9,6 +9,7 @@ import potImage from "./images/pot.png"
 import speerImage from "./images/speer.png"
 import tijdmachineImage from "./images/tijdmachine.png"
 import molotovImage from "./images/molotov.png"
+import burningImage from "./images/burning.png"
 import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
@@ -50,6 +51,7 @@ export class Game {
             .add("speerTexture", speerImage)
             .add("tijdmachineTexture", tijdmachineImage)
             .add("molotovTexture", molotovImage)
+            .add("burningTexture", burningImage)
             .add("bgMusic", backgroundTrack)
         this.pixi.loader.load(() => this.doneLoading())
     }
@@ -70,7 +72,7 @@ export class Game {
             this.potImage.x = 300;
             this.potImage.y = 260;
 
-            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!, this)
+            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!, this, this.pixi.loader.resources["burningTexture"].texture!)
             this.pixi.stage.addChild(this.ricky)
             this.ricky.scale.set(0.3);
             this.ricky.y = 150;

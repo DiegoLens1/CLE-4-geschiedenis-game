@@ -2,11 +2,13 @@ import { Character } from "./character";
 import { Game } from "../../game";
 import * as PIXI from "pixi.js";
 import { Application } from "pixi.js";
-import burningImage from "../../images/burning.png"
 
 export class Ricky extends PIXI.Sprite
 {
     game:Game
+    pixi:PIXI.Application
+    loader:any
+    burningImage:PIXI.Texture
     private _timeTravel: boolean = false;
 
     get timeTravel(): boolean {
@@ -17,9 +19,12 @@ export class Ricky extends PIXI.Sprite
         this._timeTravel = timeTravel;
     }
 
-    constructor(sprite:PIXI.Texture, game:Game) {
+    constructor(sprite:PIXI.Texture, game:Game, burningImage:PIXI.Texture) {
         super(sprite);
         this.game = game
+        this.burningImage = burningImage
+        this.pixi = pixi
+        this.loader = new PIXI.Loader()
 
         this.scale.set(0.4)
         this.y = 110;
@@ -44,6 +49,9 @@ export class Ricky extends PIXI.Sprite
             case "K":
                 console.log("test")
                 this.game.boer1.destroy()
+                let burn = new PIXI.Sprite(this.burningImage)
+                burn.scale.set(0.5)
+                this.pixi.stage.addChild(burn)
         }
     }
 }

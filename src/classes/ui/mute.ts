@@ -10,7 +10,6 @@ export class Mute extends Button {
         this.sprite = sprite
         this.sprite2 = sprite2
         this.bgMusic = bgMusic
-        this.alpha = 1
     }
 
     action(){

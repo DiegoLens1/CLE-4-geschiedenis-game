@@ -21,7 +21,7 @@ export class Button extends PIXI.Sprite
     {
         //code here
     }
-    onKeyDown(e)
+    onKeyDown(e:KeyboardEvent):any
     {
         if (this.alpha != 0) {
             switch (e.key.toUpperCase()) {

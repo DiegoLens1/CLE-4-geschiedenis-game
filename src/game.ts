@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import backgroundImage from "./images/background.png"
 import textboxImage from "./images/textbox.png"
+import tekstbox1Image from "./images/tekstbox1.png"
 import rickyImage from "./images/Ricky.png"
 import boer1Image from "./images/boer1.png"
 import boer2Image from "./images/boer2.png"
@@ -41,6 +42,7 @@ export class Game {
             .add("fishTexture", boer2Image)
             .add("backgroundTexture", backgroundImage)
             .add("textboxTexture", textboxImage)
+            .add("tekstbox1Texture", tekstbox1Image)
             .add("rickyTexture", rickyImage)
             .add("boer1Texture", boer1Image)
             .add("boer2Texture", boer2Image)
@@ -74,7 +76,7 @@ export class Game {
         this.ricky.y = 150;
         this.pixi.stage.addChild(this.ricky)
 
-        this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!)
+        this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!, this.pixi.loader.resources["tekstbox1Texture"].texture!, this.pixi)
         this.boer1.on('pointerdown', () => this.boer1.onClick());
         this.boer1.scale.set(0.3);
         this.boer1.x = 400;

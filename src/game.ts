@@ -10,8 +10,10 @@ import potImage from "./images/pot.png"
 import speerImage from "./images/speer.png"
 import tijdmachineImage from "./images/tijdmachine.png"
 import stopButton from "./images/stopButton.png"
-import {Textbox} from "./classes/ui/textbox"
-import {Character} from "./classes/inGameElements/character"
+import molotovImage from "./images/molotov.png"
+import burningImage from "./images/burning.png"
+import { Textbox } from "./classes/ui/textbox"
+import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
 import {Boer1} from "./classes/inGameElements/boer1"
 import {Menu} from "./classes/ui/menu"
@@ -27,8 +29,10 @@ export class Game {
     pixi: PIXI.Application
     textbox: Textbox
     characters: Character[] = []
-    potImage: PIXI.Sprite
-    ricky: Ricky
+    potImage:PIXI.Sprite
+    molotov:PIXI.Sprite
+    background:PIXI.Sprite
+    ricky:Ricky
     boer1: Boer1
     menu: Menu
     pot: InventoryItem
@@ -51,6 +55,8 @@ export class Game {
             .add("potTexture", potImage)
             .add("speerTexture", speerImage)
             .add("tijdmachineTexture", tijdmachineImage)
+            .add("molotovTexture", molotovImage)
+            .add("burningTexture", burningImage)
             .add("bgMusic", backgroundTrack)
             .add("stopButton", stopButton)
         this.pixi.loader.load(() => this.doneLoading())
@@ -61,10 +67,10 @@ export class Game {
         let bgMusic = this.pixi.loader.resources["bgMusic"].data!
         bgMusic.play()
 
-        let background = new PIXI.Sprite(this.pixi.loader.resources["backgroundTexture"].texture!)
-        background.scale.set(1.32);
+        this.background = new PIXI.Sprite(this.pixi.loader.resources["backgroundTexture"].texture!)
+        this.background.scale.set(1.32);
 
-        this.pixi.stage.addChild(background)
+        this.pixi.stage.addChild(this.background)
 
 
         // this.potImage = new PIXI.Sprite(this.pixi.loader.resources["potTexture"].texture)
@@ -73,10 +79,17 @@ export class Game {
         // this.potImage.x = 300;
         // this.potImage.y = 260;
 
-        this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!)
-        this.ricky.scale.set(0.3);
-        this.ricky.y = 150;
-        this.pixi.stage.addChild(this.ricky)
+            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!, this, this.pixi, this.pixi.loader.resources["burningTexture"].texture!)
+            this.pixi.stage.addChild(this.ricky)
+            this.ricky.scale.set(0.3);
+            this.ricky.y = 150;
+
+            this.molotov = new PIXI.Sprite(this.pixi.loader.resources["molotovTexture"].texture!)
+            this.pixi.stage.addChild(this.molotov)
+            this.molotov.scale.set(0.3)
+            this.molotov.x = 100
+            this.molotov.y = 280
+
 
         this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!, this.pixi.loader.resources["tekstbox1Texture"].texture!, this.pixi)
         this.boer1.on('pointerdown', () => this.boer1.onClick());
@@ -90,6 +103,10 @@ export class Game {
 
         this.potObject = new Collectable(this.pixi.loader.resources["potTexture"].texture!, false, 300, 260, "pot", this.menu)
         this.pixi.stage.addChild(this.potObject)
+
+            this.textbox = new Textbox(this.pixi.loader.resources["textboxTexture"].texture!)
+            this.pixi.stage.addChild(this.textbox)
+            this.pixi.stage.addChild(this.textbox.basicText)
 
         this.speer = new Speer(this.pixi.loader.resources["speerTexture"].texture!)
         this.pixi.stage.addChild(this.speer)

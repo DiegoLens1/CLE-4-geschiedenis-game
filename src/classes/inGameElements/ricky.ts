@@ -19,7 +19,7 @@ export class Ricky extends PIXI.Sprite
         this._timeTravel = timeTravel;
     }
 
-    constructor(sprite:PIXI.Texture, game:Game, burningImage:PIXI.Texture) {
+    constructor(sprite:PIXI.Texture, game:Game, pixi:PIXI.Application, burningImage:PIXI.Texture) {
         super(sprite);
         this.game = game
         this.burningImage = burningImage
@@ -50,7 +50,7 @@ export class Ricky extends PIXI.Sprite
                 console.log("test")
                 this.game.boer1.destroy()
                 let burn = new PIXI.Sprite(this.burningImage)
-                burn.scale.set(0.5)
+                burn.scale.set(0.42)
                 this.pixi.stage.addChild(burn)
         }
     }

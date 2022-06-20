@@ -72,7 +72,7 @@ export class Game {
             this.potImage.x = 300;
             this.potImage.y = 260;
 
-            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!, this, this.pixi.loader.resources["burningTexture"].texture!)
+            this.ricky = new Ricky(this.pixi.loader.resources["rickyTexture"].texture!, this, this.pixi, this.pixi.loader.resources["burningTexture"].texture!)
             this.pixi.stage.addChild(this.ricky)
             this.ricky.scale.set(0.3);
             this.ricky.y = 150;

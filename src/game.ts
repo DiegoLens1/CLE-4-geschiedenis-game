@@ -151,16 +151,13 @@ export class Game {
         this.speer.on('pointerdown', () => this.speer.onClick());
 
 
+        this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, false, 300, 260, "button" )
+        this.pixi.stage.addChild(this.menuButton)
+
 
         this.pixi.stage.addChild(this.menu)
         this.pixi.ticker.add((delta) => this.update(5));
         
-
-        this.menuButton = new menuButton(this.pixi, this.pixi.loader.resources["menubuttonTexture"].texture!, height, width, this)
-        this.pixi.stage.addChild(this.menuButton)
-        this.menuButton.scale.set(0.1);
-        this.menuButton.x = 715;
-        this.menuButton.y = 385;
         
     }
 

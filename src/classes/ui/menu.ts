@@ -3,6 +3,7 @@ import {Game} from '../../game'
 import {InventoryItem} from "../inGameElements/inventoryItem"
 import {Speer} from "../inGameElements/speer"
 import { item } from './item'
+import { StopButton } from './stopButton'
 
 
 export class Menu extends PIXI.Sprite {

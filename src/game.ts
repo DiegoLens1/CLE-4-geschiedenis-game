@@ -14,6 +14,7 @@ import {Textbox} from "./classes/ui/textbox"
 import {Character} from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
 import {Boer1} from "./classes/inGameElements/boer1"
+import {Boer2} from './classes/inGameElements/boer2'
 import {Menu} from "./classes/ui/menu"
 import {InventoryItem} from "./classes/inGameElements/inventoryItem"
 import {Speer} from "./classes/inGameElements/speer"
@@ -84,6 +85,11 @@ export class Game {
         this.boer1.x = 400;
         this.boer1.y = 100;
         this.pixi.stage.addChild(this.boer1)
+
+        // this.boer2 = new Boer2(this.pixi.loader.resources["boer2Texture"].texture!)
+        // this.boer2.scale.set(0.3);
+        // this.boer2.x = 
+
 
 
         this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width)

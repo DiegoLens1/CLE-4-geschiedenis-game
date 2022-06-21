@@ -138,8 +138,6 @@ export class Game {
             this.boer1.y = 100;
             this.pixi.stage.addChild(this.boer1)
 
-
-
         this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width, this)
 
         this.potObject = new Collectable(this.pixi.loader.resources["potTexture"].texture!, false, 300, 260, "pot", this.menu)
@@ -154,11 +152,12 @@ export class Game {
         this.speer.on('pointerdown', () => this.speer.onClick());
 
 
-        this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, true, 300, 260, "button" )
-        this.pixi.stage.addChild(this.menuButton)
+
 
 
         this.pixi.stage.addChild(this.menu)
+        this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, 690, 370, 50, 50)
+        this.pixi.stage.addChild(this.menuButton)
         this.pixi.ticker.add((delta) => this.update(5));
         
         

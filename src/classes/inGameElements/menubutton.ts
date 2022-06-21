@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 
 export class menuButton extends Button
 {
-    onClickMenu(){
+    action(){
         console.log('open menu');
         document.getElementsByTagName('canvas')[0].remove();
         new App();

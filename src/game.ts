@@ -21,6 +21,7 @@ import {Ricky} from "./classes/inGameElements/ricky";
 import {Boer1} from "./classes/inGameElements/boer1"
 import {Boer2} from './classes/inGameElements/boer2'
 import {Menu} from "./classes/ui/menu"
+import { menuButton } from './classes/inGameElements/menubutton'
 import {InventoryItem} from "./classes/inGameElements/inventoryItem"
 import {Speer} from "./classes/inGameElements/speer"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"
@@ -35,6 +36,9 @@ import customImage6 from "./images/6.png"
 import customImage7 from "./images/7.png"
 import customImage8 from "./images/8.png"
 import customImage9 from "./images/9.png"
+import menuButtonIMG from "./images/menuButton.png"
+import { button } from './classes/inGameElements/buttonCharacterCustomization'
+
 
 
 let height = 450
@@ -50,6 +54,7 @@ export class Game {
     ricky:Ricky
     boer1: Boer1
     menu: Menu
+    menuButton: menuButton
     pot: InventoryItem
     speer: Speer
     potObject: Collectable
@@ -88,6 +93,7 @@ export class Game {
             .add("customTexture9", customImage9)
             .add("muteTexture", muteImage)
             .add("unmuteTexture", unmuteImage)
+            .add("menubuttonTexture", menuButtonIMG)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
@@ -148,6 +154,14 @@ export class Game {
 
         this.pixi.stage.addChild(this.menu)
         this.pixi.ticker.add((delta) => this.update(5));
+        
+
+        this.menuButton = new menuButton(this.pixi, this.pixi.loader.resources["menubuttonTexture"].texture!, height, width, this)
+        this.pixi.stage.addChild(this.menuButton)
+        this.menuButton.scale.set(0.1);
+        this.menuButton.x = 715;
+        this.menuButton.y = 385;
+        
     }
 
     update(delta: number) {

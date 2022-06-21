@@ -30,6 +30,7 @@ export class Ricky extends PIXI.Sprite
         this.y = 110;
         this.x = 10;
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
+        window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUp(e))
     }
     timeTransition()
     {
@@ -41,8 +42,15 @@ export class Ricky extends PIXI.Sprite
 
     walk(){
         this.x ++;
+        
 
     }
+
+    private speed = 10;
+    onKeyUp(e: KeyboardEvent): any {
+        // console.log('keyup');
+    }
+
 
     onKeyDown(e:KeyboardEvent){
         switch (e.key.toUpperCase()) {
@@ -51,7 +59,8 @@ export class Ricky extends PIXI.Sprite
                 this.game.boer1.destroy()
                 let burn = new PIXI.Sprite(this.burningImage)
                 burn.scale.set(0.42)
-                this.pixi.stage.addChild(burn)
+                this.pixi.stage.addChild(burn)     
+
         }
     }
 }

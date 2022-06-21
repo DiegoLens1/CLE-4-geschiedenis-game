@@ -30,9 +30,11 @@ export class camera extends Button {
         // console.log(canvasPixels)
 
         let sprite = PIXI.Sprite.from(canvasPixels)
-        sprite.x = 100
-        sprite.y = 100
-        this.pixi.stage.addChild(sprite)
+        sprite.x = -601
+        sprite.y = 130
+        sprite.width =300
+        sprite.height = 150
+        this.menu.addChild(sprite)
 
         this.menu.activateMenu()
         

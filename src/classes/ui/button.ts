@@ -14,7 +14,7 @@ export class Button extends PIXI.Sprite
         this.y = y
         this.height = lengte
         this.width = breedte
-        // this.alpha = 0;
+        this.alpha = 0;
     }
 
     action()

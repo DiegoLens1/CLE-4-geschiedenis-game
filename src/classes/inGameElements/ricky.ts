@@ -63,4 +63,47 @@ export class Ricky extends PIXI.Sprite
 
         }
     }
+
+    // onKeyDown(e: KeyboardEvent): void {
+    //     switch (e.key.toUpperCase()) {
+    //         case " ":
+    //             this.shoot()
+    //             break;
+    //         case "A":
+    //         case "ARROWLEFT":
+    //             this.xspeed = -4
+    //             break
+    //         case "D":
+    //         case "ARROWRIGHT":
+    //             this.xspeed = 4
+    //             break
+    //         case "W":
+    //         case "ARROWUP":
+    //             this.yspeed = -4
+    //             break
+    //         case "S":
+    //         case "ARROWDOWN":
+    //             this.yspeed = 4
+    //             break
+    //     }
+    // }
+
+    // private onKeyUp(e: KeyboardEvent): void {
+    //     switch (e.key.toUpperCase()) {
+    //         case " ":
+    //             break;
+    //         case "A":
+    //         case "D":
+    //         case "ARROWLEFT":
+    //         case "ARROWRIGHT":
+    //             this.xspeed = 0
+    //             break
+    //         case "W":
+    //         case "S":
+    //         case "ARROWUP":
+    //         case "ARROWDOWN":
+    //             this.yspeed = 0
+    //             break
+    //     }
+    // }
 }

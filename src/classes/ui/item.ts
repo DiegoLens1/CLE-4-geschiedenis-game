@@ -1,10 +1,11 @@
 import * as PIXI from 'pixi.js'
-import { Game } from '../../game';
+//import { Game } from '../../game';
 import { Menu } from './menu';
 import backButton from '../../images/back-button.png';
 import item1 from '../../images/pot2.png';
 import backgroundImage from '../../images/color background.jpg';
 import textBlock from '../../images/tekst.png';
+import { Game } from '../../game';
 
 export class item{
     private pixiWidth = 800;

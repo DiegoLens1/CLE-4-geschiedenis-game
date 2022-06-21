@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js'
 import startImage from "./images/start.jpg"
 import rickyImage from "./images/Ricky.png"
 import paperImage from "./images/paperbg.jpg"
+import exitButton from "./images/exitbutton.png"
 import { CustomizationScreen } from './chooseYourCharacter';
 
 export class App{
@@ -21,6 +22,7 @@ export class App{
         this.loader.add('startTexture', startImage);
         this.loader.add('rickyTexture', rickyImage);
         this.loader.add('paperTexture', paperImage);
+        this.loader.add('exitTexture', exitButton);
         this.loader.load(()=>this.loadCompleted());
 
     }
@@ -35,12 +37,23 @@ export class App{
         start.scale.set(0.3);
         start.anchor.set(0.5);
         start.x = 290;
-        start.y = 200;
+        start.y = 170;
         
         this.pixi.stage.addChild(start);
 
         start.interactive = true; 
         start.buttonMode = true;
+
+        let exit = new PIXI.Sprite(this.loader.resources["exitTexture"].texture!);
+        exit.scale.set(0.42);
+        start.anchor.set(0.5);
+        exit.x = 105;
+        exit.y = 250;
+
+        this.pixi.stage.addChild(exit);
+
+        exit.interactive = true;
+        exit.buttonMode = true;
 
         let ricky = new PIXI.Sprite(this.loader.resources["rickyTexture"].texture!);
 
@@ -52,11 +65,16 @@ export class App{
         this.pixi.stage.addChild(ricky);
 
         start.on('pointerdown', () => this.onClick());
+        exit.on('pointerdown', () => this.onClickExit());
     }
 
     onClick(){
         document.getElementsByTagName('canvas')[0].remove();
         new CustomizationScreen();
+    }
+
+    onClickExit(){
+        document.getElementsByTagName('canvas')[0].remove();
     }
 }
 

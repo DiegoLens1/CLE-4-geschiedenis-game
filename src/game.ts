@@ -19,7 +19,9 @@ import { Textbox } from "./classes/ui/textbox"
 import { Character } from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
 import {Boer1} from "./classes/inGameElements/boer1"
+import {Boer2} from './classes/inGameElements/boer2'
 import {Menu} from "./classes/ui/menu"
+import { menuButton } from './classes/inGameElements/menubutton'
 import {InventoryItem} from "./classes/inGameElements/inventoryItem"
 import {Speer} from "./classes/inGameElements/speer"
 import backgroundTrack from "url:./music/backgroundaudio.mp3"
@@ -34,6 +36,9 @@ import customImage6 from "./images/6.png"
 import customImage7 from "./images/7.png"
 import customImage8 from "./images/8.png"
 import customImage9 from "./images/9.png"
+import menuButtonIMG from "./images/menuButton.png"
+import { button } from './classes/inGameElements/buttonCharacterCustomization'
+
 
 
 let height = 450
@@ -49,6 +54,7 @@ export class Game {
     ricky:Ricky
     boer1: Boer1
     menu: Menu
+    menuButton: menuButton
     pot: InventoryItem
     speer: Speer
     potObject: Collectable
@@ -87,6 +93,7 @@ export class Game {
             .add("customTexture9", customImage9)
             .add("muteTexture", muteImage)
             .add("unmuteTexture", unmuteImage)
+            .add("menubuttonTexture", menuButtonIMG)
         this.pixi.loader.load(() => this.doneLoading())
     }
 
@@ -124,14 +131,11 @@ export class Game {
             this.molotov.x = 100
             this.molotov.y = 280
 
-            this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!, this.pixi.loader.resources["tekstbox1Texture"].texture!, this.pixi)
-            this.boer1.on('pointerdown', () => this.boer1.onClick());
-            this.boer1.scale.set(0.3);
-            this.boer1.x = 400;
-            this.boer1.y = 100;
-            this.pixi.stage.addChild(this.boer1)
-    
-    
+        // this.boer2 = new Boer2(this.pixi.loader.resources["boer2Texture"].texture!)
+        // this.boer2.scale.set(0.3);
+        // this.boer2.x = 
+
+
 
         this.menu = new Menu(this.pixi, this.pixi.loader.resources["tijdmachineTexture"].texture!, height, width, this)
 
@@ -147,9 +151,14 @@ export class Game {
         this.speer.on('pointerdown', () => this.speer.onClick());
 
 
+        this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, false, 300, 260, "button" )
+        this.pixi.stage.addChild(this.menuButton)
+
 
         this.pixi.stage.addChild(this.menu)
         this.pixi.ticker.add((delta) => this.update(5));
+        
+        
     }
 
     update(delta: number) {

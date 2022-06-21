@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import {Game} from '../../game'
 import { App } from '../../app'
-import menuIMG from "./image/menubutton.png"
+import menuIMG from "../../images/menubutton.png"
 
 export class menuButton extends PIXI.Sprite
 {

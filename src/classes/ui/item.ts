@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+//import { Game } from '../../game';
 import { Menu } from './menu';
 import backButton from '../../images/back-button.png';
 import item1 from '../../images/pot2.png';

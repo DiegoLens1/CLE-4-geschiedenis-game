@@ -131,9 +131,12 @@ export class Game {
             this.molotov.x = 100
             this.molotov.y = 280
 
-        // this.boer2 = new Boer2(this.pixi.loader.resources["boer2Texture"].texture!)
-        // this.boer2.scale.set(0.3);
-        // this.boer2.x = 
+            this.boer1 = new Boer1(this.pixi.loader.resources["boer1Texture"].texture!, this.pixi.loader.resources["tekstbox1Texture"].texture!, this.pixi)
+            this.boer1.on('pointerdown', () => this.boer1.onClick());
+            this.boer1.scale.set(0.3);
+            this.boer1.x = 400;
+            this.boer1.y = 100;
+            this.pixi.stage.addChild(this.boer1)
 
 
 

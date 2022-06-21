@@ -10,6 +10,7 @@ import potImage from "./images/pot.png"
 import speerImage from "./images/speer.png"
 import tijdmachineImage from "./images/tijdmachine.png"
 import stopButton from "./images/stopButton.png"
+import camera from "./images/camera.png"
 import {Textbox} from "./classes/ui/textbox"
 import {Character} from "./classes/inGameElements/character"
 import {Ricky} from "./classes/inGameElements/ricky";
@@ -53,6 +54,7 @@ export class Game {
             .add("tijdmachineTexture", tijdmachineImage)
             .add("bgMusic", backgroundTrack)
             .add("stopButton", stopButton)
+            .add("camera", camera)
         this.pixi.loader.load(() => this.doneLoading())
     }
 

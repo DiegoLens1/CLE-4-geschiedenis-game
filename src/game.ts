@@ -151,7 +151,7 @@ export class Game {
         this.speer.on('pointerdown', () => this.speer.onClick());
 
 
-        this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, false, 300, 260, "button" )
+        this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, true, 300, 260, "button" )
         this.pixi.stage.addChild(this.menuButton)
 
 

@@ -35,7 +35,7 @@ export class Menu extends PIXI.Sprite {
     private createInventory() {
         this.pot = new InventoryItem(this.pixi.loader.resources["potTexture"].texture!, -450, -50, 1.4)
         this.speer = new InventoryItem(this.pixi.loader.resources["speerTexture"].texture!,-180,-60,0.55)
-        this.stopButton = new StopButton(this.pixi.loader.resources["stopButton"].texture!,416,-343,50,212)
+        this.stopButton = new StopButton(this.pixi.loader.resources["stopButton"].texture!,416,-343,50,212,this.game)
         this.camera = new camera(this.pixi.loader.resources["camera"].texture!,-153,-418,120,282, this.pixi, this)
         this.muteButton = new Mute(this.pixi.loader.resources["unmuteTexture"].texture!, this.pixi.loader.resources["muteTexture"].texture!, -750,-420,100,100, this.game.bgMusic)
         this.speer.angle = 10;

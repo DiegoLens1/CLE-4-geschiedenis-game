@@ -40,7 +40,7 @@ export class Menu extends PIXI.Sprite {
         this.stopButton = new StopButton(this.pixi.loader.resources["stopButton"].texture!,416,-343,50,212,this.game)
         this.camera = new camera(this.pixi.loader.resources["camera"].texture!,-153,-418,120,282, this.pixi, this)
         this.muteButton = new Mute(this.pixi.loader.resources["unmuteTexture"].texture!, this.pixi.loader.resources["muteTexture"].texture!, -750,-420,100,100, this.game.bgMusic)
-       this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!,750,-400,50,212,this.game)
+       this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!,565,300,100,100,this.game)
         this.speer.angle = 10;
         this.pot.alpha = 0.2
         this.speer.alpha = 0.2

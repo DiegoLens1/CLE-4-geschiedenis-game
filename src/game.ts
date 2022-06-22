@@ -156,7 +156,7 @@ export class Game {
 
 
         this.pixi.stage.addChild(this.menu)
-        this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, 690, 370, 50, 50, this)
+        // this.menuButton = new menuButton(this.pixi.loader.resources["menubuttonTexture"].texture!, 690, 370, 50, 50, this)
         this.pixi.stage.addChild(this.menuButton)
         this.pixi.ticker.add((delta) => this.update(5));
         

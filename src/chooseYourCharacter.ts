@@ -1,7 +1,12 @@
+//import pixi
 import * as PIXI from 'pixi.js'
 
-import { Game } from './game';
+//import classes
+import { Game } from './game'
+import { mainCharacterCustomizable } from "./classes/inGameElements/customCharacter"
+import { button } from './classes/inGameElements/buttonCharacterCustomization'
 
+//import images
 import paperImage from "./images/paperbg.jpg"
 import continueButtonImg from "./images/continue.jpg"
 
@@ -17,9 +22,7 @@ import customImage8 from "./images/8.png"
 import customImage9 from "./images/9.png"
 import arrowButton from "./images/arrow.png"
 
-import { mainCharacterCustomizable } from "./classes/inGameElements/customCharacter"
-import { button } from './classes/inGameElements/buttonCharacterCustomization'
-
+//global variables
 let height = 450
 let width = 800
 let customCharacter : mainCharacterCustomizable
@@ -35,6 +38,7 @@ export class CustomizationScreen {
         this.pixi = new PIXI.Application({height: height, width: width})
         document.body.appendChild(this.pixi.view)
 
+        //load all textures
         this.pixi.loader
             .add("customTexture0", customImage0)
             .add("customTexture1", customImage1)
@@ -50,16 +54,19 @@ export class CustomizationScreen {
             .add('paperTexture', paperImage)
             .add('continueButtonTexture', continueButtonImg)
 
+        // after loader is done, load doneLoading function
         this.pixi.loader.load(() => this.doneLoading())
 
         texturesPersonalisationLoader = this.pixi.loader
     }
 
     doneLoading() {
+        //add paper wallpaper
         let paper = new PIXI.Sprite(this.pixi.loader.resources["paperTexture"].texture!);
         paper.scale.set(0.6);
         this.pixi.stage.addChild(paper);
 
+        //add start game button
         let continueButton = new PIXI.Sprite(this.pixi.loader.resources["continueButtonTexture"].texture!);
         continueButton.anchor.set(0.5)
         continueButton.scale.set(0.1);
@@ -71,6 +78,7 @@ export class CustomizationScreen {
 
         this.pixi.stage.addChild(continueButton);
         
+        //If chosen character is saved before, load that texture, else load basic default    
         if (localStorage.getItem('chosenAvatar') !== null) {
             
             let localStorageAvatar = localStorage.getItem('chosenAvatar')!;
@@ -82,7 +90,7 @@ export class CustomizationScreen {
             customCharacter.currentSprite = "customTexture0";
         }
 
-
+        //These buttons are the buttons on the left and right side of the screen to cycle textures
         arrowButtonRight = new button(this.pixi, this.pixi.loader.resources["arrowTexture"].texture!, 'right')
         arrowButtonRight.on('pointerdown', () => this.onClickRight())
 
@@ -91,6 +99,9 @@ export class CustomizationScreen {
 
         }
 
+
+    //the onClick functions are used to cycle to the right texture. 
+    //e.g. when current texture is nr. 1, go to either nr. 0 or 2 depending on if is pressed on the left or right button
     onClickRight() {
         if (customCharacter.currentSprite == "customTexture0") {
             this.pixi.stage.removeChild(customCharacter)
@@ -241,8 +252,11 @@ export class CustomizationScreen {
         }
     }
 
+    // This function will load when pressed on 'verder', this will load a new game
     continueHandler(){
-        document.getElementsByTagName('canvas')[0].remove();
+        for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
+            document.getElementsByTagName('canvas')[i].remove();
+          }
         new Game();
     }
 }

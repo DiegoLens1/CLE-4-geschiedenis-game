@@ -62,6 +62,7 @@ export class App{
         ricky.x = 630;
         ricky.y = 280;
 
+
         this.pixi.stage.addChild(ricky);
 
         start.on('pointerdown', () => this.onClick());
@@ -69,12 +70,16 @@ export class App{
     }
 
     onClick(){
-        document.getElementsByTagName('canvas')[0].remove();
+        for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
+            document.getElementsByTagName('canvas')[i].remove();
+          }
         new CustomizationScreen();
     }
 
     onClickExit(){
-        document.getElementsByTagName('canvas')[0].remove();
+        for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
+            document.getElementsByTagName('canvas')[i].remove();
+          }
     }
 }
 

@@ -8,7 +8,9 @@ export class menuButton extends Button
 {
     action(){
         console.log('open menu');
-        document.getElementsByTagName('canvas')[0].remove();
+        for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
+            document.getElementsByTagName('canvas')[i].remove();
+          }
         new App();
 }
 

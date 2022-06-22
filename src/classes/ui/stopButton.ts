@@ -5,7 +5,9 @@ import {App} from "../../app";
 export class StopButton extends Button
 {
     action() {
-      document.getElementsByTagName('canvas')[0].remove();
+      for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
+        document.getElementsByTagName('canvas')[i].remove();
+      }
       new App();
     }
 }

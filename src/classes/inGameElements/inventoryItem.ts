@@ -18,7 +18,9 @@ export class InventoryItem extends PIXI.Sprite {
 
     private onClick() {
         console.log('clicked on pot');
-        document.getElementsByTagName('canvas')[0].remove();
+        for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
+            document.getElementsByTagName('canvas')[i].remove();
+          }
         new item()
     }
 

@@ -62,7 +62,9 @@ export class item{
 
     onClickBack(){
         console.log('back to the game');
-        document.getElementsByTagName('canvas')[0].remove();
+        for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
+            document.getElementsByTagName('canvas')[i].remove();
+          }
         new Game();
     }
 }

@@ -1,8 +1,14 @@
+//import pixi
 import * as PIXI from 'pixi.js'
+
+//import classes
 import {Game} from '../../game'
 import { App } from '../../app'
-import menuIMG from "../../images/menubutton.png"
 import { Button } from '../ui/button'
+
+//import images
+import menuIMG from "../../images/menubutton.png"
+
 
 export class menuButton extends Button
 {

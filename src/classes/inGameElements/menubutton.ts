@@ -6,12 +6,16 @@ import { Button } from '../ui/button'
 
 export class menuButton extends Button
 {
-    action(){
-        console.log('open menu');
+    game:Game
+    constructor(sprite:PIXI.Texture, x:number, y:number, lengte: number, breedte: number,game:Game) {
+        super(sprite,x,y,lengte,breedte);
+        this.game = game
+    }
+    action() {
+        this.game.bgMusic.volume=0;
         for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      
             document.getElementsByTagName('canvas')[i].remove();
           }
-        new App();
-}
-
+      new App();
+    }
 }

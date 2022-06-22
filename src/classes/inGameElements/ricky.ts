@@ -55,11 +55,11 @@ export class Ricky extends PIXI.Sprite
     onKeyDown(e:KeyboardEvent){
         switch (e.key.toUpperCase()) {
             case "K":
-                console.log("test")
                 this.game.boer1.destroy()
                 let burn = new PIXI.Sprite(this.burningImage)
                 burn.scale.set(0.42)
-                this.pixi.stage.addChild(burn)     
+                this.pixi.stage.addChild(burn)
+
 
         }
     }

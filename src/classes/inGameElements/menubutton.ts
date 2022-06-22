@@ -17,6 +17,8 @@ export class menuButton extends Button
         super(sprite,x,y,lengte,breedte);
         this.game = game
     }
+
+    //add function to open new app (menu)
     action() {
         this.game.bgMusic.volume=0;
         for (let i = 0; i < document.getElementsByTagName('canvas').length; i++) {      

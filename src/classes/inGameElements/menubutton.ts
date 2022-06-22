@@ -4,7 +4,7 @@ import { App } from '../../app'
 import menuIMG from "../../images/menubutton.png"
 import { Button } from '../ui/button'
 
-export class StopButton extends Button
+export class menuButton extends Button
 {
     game:Game
     constructor(sprite:PIXI.Texture, x:number, y:number, lengte: number, breedte: number,game:Game) {

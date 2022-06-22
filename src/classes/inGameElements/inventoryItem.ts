@@ -9,7 +9,7 @@ export class InventoryItem extends PIXI.Sprite {
         this.anchor.set(0.5)
         this.x = x
         this.y = y
-        this.interactive = true
+        this.interactive = false
         this.collected = false
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
 
@@ -27,22 +27,24 @@ export class InventoryItem extends PIXI.Sprite {
     }
 
     onKeyDown(e: KeyboardEvent): any {
-        // if (this.alpha != 0) {
-        //     switch (e.key.toUpperCase()) {
-        //         case "I":
-        //             this.alpha = 0
-        //             this.interactive = false
-        //     }
-        // } else {
-        //     switch (e.key.toUpperCase()) {
-        //         case "I":
-        //             if(this.collected){
-        //                 this.alpha = 1
-        //             }else{
-        //                 this.alpha = 0.2
-        //             }
-        //             this.interactive = true
-        //     }
-        // }
+        if (this.alpha != 0) {
+            switch (e.key.toLowerCase()) {
+                case "I":
+                    this.alpha = 0
+                    this.interactive = false
+            }
+        } else {
+            switch (e.key.toLowerCase()) {
+                case "I":
+                    if(this.collected){
+                        this.alpha = 1
+                        this.interactive = true
+                    }else{
+                        this.alpha = 0.2
+                        this.interactive = false
+                    }
+
+            }
+        }
     }
 }
